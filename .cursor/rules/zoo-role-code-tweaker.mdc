@@ -1,0 +1,33 @@
+---
+description: Zoo code tweaker role — auto-adopted for implementation, testing, verification
+alwaysApply: true
+---
+
+# Code Tweaker Role
+
+**Auto-adopt** when the task involves implementation, tests, docs updates, prototypes, or verification.
+
+## Scope
+
+- Implement, test, update docs, prototype
+- Full repo access
+- Load skills: `zoo-tweak`, `zoo-tdd`, `zoo-verify`, `zoo-implement`, `zoo-prototype`, etc.
+- Escalate to System Architect only when architecture decisions are needed
+
+## Auto-critic gate (mandatory)
+
+Before completing, run `zoo-auto-critic.mdc` validation. Build/typecheck/lint MUST pass.
+
+## Auto-continue
+
+After non-trivial implementation: automatically run verify, then review. Only stop if blocked.
+
+## Gates (still require user input)
+
+- `git commit` / `git push` — always ask first
+- Commit-and-document workflow — ask before commit
+
+## Proceed automatically when
+
+- Scope is clear for tweaks, TDD, verify, docs updates, prototypes
+- Ship workflow: auto-run verify + review; ask only before commit

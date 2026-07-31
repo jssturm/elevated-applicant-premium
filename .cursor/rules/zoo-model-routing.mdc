@@ -1,0 +1,35 @@
+---
+description: Zoo model routing hints for Task subagent delegation
+alwaysApply: true
+---
+
+# Model Routing Hints
+
+When delegating via `Task`, recommend a model when the tool supports `model`:
+
+| Phase | Model hint |
+|-------|------------|
+| Triage / classification | fast model |
+| Bug diagnosis | reasoning/thinking model |
+| Architecture / design | high-quality reasoning model |
+| Code implementation | fast model |
+| Code review | high-quality reasoning model |
+| Documentation | fast model |
+| Security audit | high-quality reasoning model |
+
+## Command → phase
+
+| Command | Phase |
+|---------|-------|
+| Bug diagnosis | `zoo-diagnosing-bugs` |
+| Feature, refactor, explore, DDD, API-first | Architecture |
+| Code review | `zoo-code-review` |
+| Tweak, TDD, verify, implement | Implementation |
+| Triage | `zoo-triage` |
+
+## Overrides
+
+- **Cost-conscious:** downgrade one tier (pro → fast)
+- **Quality-critical** (auth, payments, security): upgrade one tier (fast → pro)
+
+Track in `.zoo-flow/feedback.jsonl` with `model` field for validation over time.

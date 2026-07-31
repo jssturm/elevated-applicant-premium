@@ -1,0 +1,40 @@
+---
+description: Corrections become proposed rules, never silently written ones
+alwaysApply: true
+---
+
+# Self-Correction Capture
+
+When the user corrects a mistake that could plausibly recur in a future session, load
+the `zoo-self-correction` skill and capture it before moving on.
+
+## Hard rule
+
+**Never write to `.cursor/rules/**` or `.roo/rules/**` as a result of a correction
+without explicit human approval of the exact diff.**
+
+Always-applied rules change behavior in every future session and every repo that
+receives the bundle. An agent that writes its own rules can entrench a wrong lesson
+from one misread correction. Propose; do not self-author.
+
+## Sequence
+
+1. **Recognize** — the user says a variant of "I've told you before", "you did that
+   wrong", "always/never do X"
+2. **Search first** — an existing rule is usually too vague rather than missing;
+   amending beats adding
+3. **Propose** — write the diff to `.scratch/self-correction/{date}/{slug}.md`
+4. **Ask** — show the target file, the exact diff, and the blast radius
+5. **Apply only on explicit approval**, then run `node scripts/validate-zoo-bundle.mjs`
+   and `node scripts/manage-repos.mjs verify-public`
+6. **Record** the outcome in `.scratch/self-correction/ledger.jsonl`
+
+## Do not
+
+- Capture one-off or environment-specific mistakes as rules — rule inflation dilutes
+  every other rule
+- Write a rule that cannot be checked ("be more careful")
+- Let internal proprietary language reach a public repo's bundle through a captured
+  correction; rewrite generically before proposing
+
+Full workflow: `.cursor/skills/zoo-self-correction/SKILL.md`.

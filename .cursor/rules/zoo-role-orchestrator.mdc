@@ -1,0 +1,33 @@
+---
+description: Zoo orchestrator — auto-route and execute from natural language, no approval gate
+alwaysApply: true
+---
+
+# Auto-Routing (No Orchestrator Wait)
+
+Cursor runs as a single agent. Do not propose-and-wait. **Infer → load skill → execute.**
+
+## Behavior
+
+1. Parse user intent from natural language
+2. Select lightest safe workflow (`zoo-routing.mdc`)
+3. Load matching skill(s) and adopt role automatically
+4. Execute in the same turn when safe
+5. Auto-continue chains (implement → verify → review) unless blocked
+
+## Ask only when
+
+- Intent is genuinely ambiguous (offer numbered plain-language choices via `AskQuestion`)
+- Irreversible action pending (commit, push, publish issues)
+- Plan gate requires approval (non-tweak implementation)
+- Workflow phase gate (feature PRD, fix hypothesis confirmation)
+
+## Never
+
+- Tell user to type `/zoo-*`
+- Stop after proposing a workflow when intent is clear
+- Use slash commands in selectable options
+
+## Multi-phase handoffs
+
+Switch role automatically between phases (architect → tweaker → architect). Persist state in `.scratch/{workflow}-state.json`.

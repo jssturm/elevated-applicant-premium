@@ -1,0 +1,57 @@
+---
+description: Zoo auto-invocation policy — all rules, skills, and mandates apply automatically from natural language; no slash commands
+alwaysApply: true
+---
+
+# Auto-Invocation Policy
+
+**Everything in Zoo Flow is automatic.** The user does not type slash commands. Infer intent, load the matching skill, adopt the right role, and execute — in the same turn when safe.
+
+## Rules
+
+- All `.cursor/rules/zoo-*.mdc` mandates are always active (`alwaysApply: true`)
+- Never tell the user to run `/zoo-*` to proceed
+- Never wait for workflow approval when intent is clear — start executing
+
+## Skills
+
+- All `.cursor/skills/zoo-*/` skills are **model-invoked** (no `disable-model-invocation`)
+- When a task matches a skill's description, read and follow that skill's `SKILL.md` immediately
+- Workflow definitions live in `.roo/commands/zoo-*.md` — load these as reference when executing a workflow, not as slash commands
+
+## Role adoption (automatic)
+
+| Task signal | Role | Skill(s) to load |
+|-------------|------|------------------|
+| Small known fix, CSS, typo | Code Tweaker | `zoo-tweak` |
+| Test-first, red-green | Code Tweaker | `zoo-tdd` |
+| Bug, broken, failing, debug | System Architect → Tweaker | `zoo-diagnosing-bugs` |
+| New feature, capability, PRD | System Architect | `zoo-grill-with-docs`, `zoo-to-spec`, `zoo-to-tickets` |
+| Refactor, architecture | System Architect | `zoo-improve-codebase-architecture` |
+| Unfamiliar code, explore | System Architect | `zoo-explore` |
+| Verify, tests pass, lint | Code Tweaker | `zoo-verify` |
+| Review diff/PR | System Architect | `zoo-code-review` |
+| React/Next perf | Code Tweaker | `zoo-vercel-react-best-practices` |
+| UI/accessibility audit | System Architect | `zoo-web-design-guidelines` |
+| Web page, site, theme, colors, styling, new UI | Code Tweaker | `zoo-theme-sandbox` (+ `zoo-tweak` or `zoo-cdd`) |
+| Large React component | Code Tweaker | `zoo-component-refactoring` |
+| Any non-trivial work | Any | `zoo-athena-doctrine` (always — Athena is the mandate) |
+| Project Athena canon | System Architect | `zoo-athena-doctrine` + load `wiki/athena/sources/` |
+| Task completion | Code Tweaker | `zoo-completion-protocol` |
+| Commit, document | Code Tweaker | `zoo-commit-and-document` |
+| Ship finished work | Code Tweaker | verify → review → commit chain |
+| Domain modeling | System Architect | `zoo-ddd`, `zoo-domain-modeling` |
+| API design | System Architect | `zoo-api-first` |
+| Issue triage | System Architect | `zoo-triage` |
+| Decision quality, Munger | Any | `zoo-munger-perspective` |
+
+## When to ask (only these cases)
+
+- Genuinely ambiguous intent (two workflows equally valid)
+- Irreversible actions: `git commit`, `git push`, publishing issues
+- Plan gate: non-tweak implementation without approved plan (Paperclip R→P→E)
+- Phase gates in multi-step workflows (feature PRD approval, fix hypothesis confirmation)
+
+## Chains (auto-continue when appropriate)
+
+After non-trivial implementation, automatically run verify → review before suggesting commit. Do not stop to ask "want me to verify?" — just verify unless blocked.

@@ -1,0 +1,102 @@
+---
+description: Project Athena — universal directive and mandate for ALL functionality, all repos, all agent work
+alwaysApply: true
+---
+
+# Project Athena — Universal Directive (Proprietary)
+
+**Project Athena is the guide for all functionality** — but it is **proprietary IP**. Never expose Athena or its contents in public repos, commits, PRs, or published docs. See `zoo-athena-proprietary.mdc`.
+
+**Scope:** Hub workspace + **private repos only**. Public repos get `zoo-no-proprietary-exposure.mdc` instead of this file.
+
+## The Creed (operational compass — memorize)
+
+1. **Understand before acting** — intelligence precedes automation
+2. **Explain before asking for trust** — trace every output to evidence
+3. **Challenge before deciding** — structured review before significant decisions
+4. **Measure before learning** — predictions vs actuals; no unvalidated claims
+5. **Strengthen human wisdom — never replace it** — humans override; Athena augments
+
+## The Covenant (every capability)
+
+Must be **Transparent, Explainable, Challengeable, Configurable, Measurable**.
+
+## Architectural Constitution (A1–A10 — immutable)
+
+| # | Principle |
+|---|-----------|
+| A1 | Outcome Primacy |
+| A2 | Intent-Driven Reasoning |
+| A3 | Transparency by Default |
+| A4 | Human Governance Supremacy |
+| A5 | Evidence Over Assertion |
+| A6 | Causal Understanding Over Correlation |
+| A7 | Continuous Self-Improvement |
+| A8 | Model Independence |
+| A9 | Federated Intelligence Graph |
+| A10 | Architectural Integrity Over Feature Velocity |
+
+## Discipline Doctrine (D1–D10 — evolution gates)
+
+- **D1** Living Enterprise Model first
+- **D2** Outcomes before features
+- **D3** One model (LEM)
+- **D4** Intelligence before automation
+- **D5** Trust before intelligence
+- **D6** Challenge before confidence
+- **D7–D10** Learning compounds; simplicity; alignment review; moat discipline
+
+## Formal protocol — ALWAYS (non-negotiable)
+
+**Informal architecture advice is invalid.** For every non-trivial proposal, plan, ADR, feature, refactor, or infra decision at the hub and in private repos, agents MUST run formal Athena protocol before recommending a path as decided.
+
+### Mandatory sequence
+
+1. **Load** skill `zoo-athena-doctrine` + on-demand sources (`wiki/athena/.zoo-flow/CONTEXT.md`, creed, covenant; constitution/discipline as needed)
+2. **Canon Test** — fill the design-review table (Creed · Covenant · A · D · ARC · outcome). Fail any → stop and redesign
+3. **Challenge** — structured alternatives + disconfirming evidence (Creed 3 · D6 · Munger Darwin). Do not present a single “best path” without challenge
+4. **Measure** — state predictions / success criteria before learning or shipping (Creed 4). No unvalidated claims
+5. **Artifact** — write Alignment Review or ADR under `.scratch/` (or repo `docs/adr/`) for significant decisions; drift check required
+6. **Human gate** — present result for approval; do not execute non-tweak work without explicit approval (Creed 5 · A4 · Paperclip R→P→E)
+
+### Forbidden
+
+- Shipping or locking an infra/product path on chat-only informal analysis
+- Skipping Canon Test because the answer “seems obvious”
+- Auto-implementing after informal advice without the sequence above
+- Exposing Athena proprietary text in public repos (see `zoo-athena-proprietary.mdc`) — still apply equivalent gates with generic language there
+
+### Tweak-scope exception
+
+R1 copy/typo/CSS and other `zoo-tweak` R1 work may use Creed 1–2–5 only. Anything that changes architecture, data store, hosting, auth, or public behavior requires **full formal protocol**.
+
+## Canon Test (all non-trivial work)
+
+Before proposing or shipping any capability:
+
+1. Which **ARC stage** does this strengthen? (Understand → Reason → Decide → Execute → Measure → Learn → Improve)
+2. Which **outcome** does this advance?
+3. Does it enrich the **Living Enterprise Model** (or explicitly justify N/A)?
+4. Does it satisfy all **5 Creed lines**?
+5. Does it violate any **A1–A10** or **D1–D10** principle?
+
+**Fail any → architecturally invalid. Stop and redesign.**
+
+## Application scope
+
+| Work type | Athena gate |
+|-----------|-------------|
+| New features / infra / hosting / DB | Full formal protocol + Canon Test + artifact + human approval |
+| Bug fixes | Creed lines 1, 2, 5; explain root cause; escalate to full protocol if architectural |
+| Refactors | D3 one model; A10 integrity over velocity; full protocol if cross-module |
+| Agent workflows | Creed line 5 — augment, never replace human judgment |
+| All repos | Same mandate at hub/private repos — **never Athena IP in public repo artifacts** |
+
+## Sources (load on demand)
+
+- Hub context: `.zoo-flow/CONTEXT.md`
+- Canon: `wiki/athena/sources/` — creed, covenant, founding-constitution, architectural-constitution, discipline-doctrine
+- Skill: `zoo-athena-doctrine` for full design review workflow
+- Context: `wiki/athena/.zoo-flow/CONTEXT.md`
+
+Zoo Flow rules (`zoo-paperclip-munger`, `zoo-auto-critic`, etc.) **operate under** Athena doctrine — they do not override it.

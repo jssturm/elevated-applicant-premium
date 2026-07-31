@@ -1,0 +1,23 @@
+---
+description: Upstream fork clones that must never be pushed to GitHub origin
+alwaysApply: true
+---
+
+# Git Push Skip List
+
+These local repos point at **upstream remotes you do not own**. **Never `git push`** them (including bulk "commit all repos" workflows). Local commits are fine; publishing requires a `jssturm` fork remote.
+
+Canonical list: `.cursor/repos/push-skip-list.json`
+
+| Local path | Upstream remote | Why skip |
+|------------|-----------------|----------|
+| `zoo-flow` | `Fernado03/zoo-flow` | No write access |
+| `agenttrace-luo` | `luoyuctl/agenttrace` | No write access |
+| `bernstein` | `sipyourdrink-ltd/bernstein` | No write access |
+| `omniroute` | `diegosouzapw/OmniRoute` | No write access |
+
+## Agent obligations
+
+1. **Bulk push/commit-to-GitHub** — exclude these four paths always.
+2. **Single-repo push** — if user asks to push one of these, explain upstream has no write access; offer fork remote setup instead.
+3. **Do not rebase/pull-and-push** upstream branches here unless user explicitly requests sync from upstream (read-only).

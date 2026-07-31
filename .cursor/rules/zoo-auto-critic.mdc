@@ -1,0 +1,35 @@
+---
+description: Zoo auto-critic validation gate — mandatory before code tweaker completions
+alwaysApply: true
+---
+
+# Auto-Critic Validation Gate
+
+**Mandatory before completing any implementation work.**
+
+## Must pass
+
+- Build/compile (if project has one)
+- Typecheck (if project has one)
+- Lint — zero new errors
+
+Max 2 fix cycles, then escalate to architect review.
+
+## Also check
+
+- Spec adherence against `.scratch/` plan
+- Path safety (verified paths only)
+- Risk assessment (Low/Medium/High)
+
+## Also check (Athena Creed alignment)
+
+- **Explain** — can the reasoning be traced to evidence? (Creed line 2)
+- **Challenge** — were alternatives considered? (Creed line 3)
+- **Measure** — is success verifiable? (Creed line 4)
+- **Human wisdom** — does this augment, not replace, human judgment? (Creed line 5)
+
+See `zoo-athena-doctrine.mdc` for full Canon Test.
+
+- Throwaway prototypes
+- Documentation-only changes
+- Explicit user request — state reason

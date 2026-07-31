@@ -1,0 +1,47 @@
+---
+description: Zoo skills — auto-invoked from task intent, no slash commands required
+alwaysApply: true
+---
+
+# Zoo Skills (Auto-Invoked)
+
+All skills in `.cursor/skills/zoo-*/` are **model-invoked**. When a task matches a skill description, read and follow that skill immediately. Re-sync: `node scripts/sync-zoo-skills-to-cursor.mjs`.
+
+## Intent → skill (auto-load)
+
+| User intent | Skill |
+|-------------|-------|
+| Small fix, tweak, CSS change | `zoo-tweak` |
+| Test-first, TDD, red-green | `zoo-tdd` |
+| Behavior scenarios, Gherkin | `zoo-bdd` |
+| Acceptance criteria first | `zoo-atdd` |
+| Component from primitives | `zoo-cdd` |
+| Web page, site, theme, colors, styling, UI design | `zoo-theme-sandbox` |
+| Bug, debug, broken, failing | `zoo-diagnosing-bugs` |
+| New feature, PRD, planning | `zoo-grill-with-docs`, `zoo-to-spec`, `zoo-to-tickets` |
+| Refactor, architecture | `zoo-improve-codebase-architecture` |
+| Explore, unfamiliar code | `zoo-explore` |
+| Verify, run tests, lint, build | `zoo-verify` |
+| Review diff, PR, branch | `zoo-code-review` |
+| Commit, journal, document | `zoo-commit-and-document` |
+| Domain modeling, entities | `zoo-ddd`, `zoo-domain-modeling` |
+| API contract first | `zoo-api-first` |
+| Triage issues | `zoo-triage` |
+| Munger, decision quality | `zoo-munger-perspective` |
+| Handoff document | `zoo-handoff` |
+| Prototype, spike | `zoo-prototype` |
+| Update docs | `zoo-update-docs` |
+| Multi-session mapping | `zoo-wayfinder` |
+
+Full manifest: `.cursor/skills/zoo-skills-manifest.json`
+
+## Helper skills (auto-invoked by other skills)
+
+`zoo-grilling`, `zoo-domain-modeling`, `zoo-codebase-design`
+
+## Protocol
+
+1. Match intent → read skill `SKILL.md` fully
+2. Read linked reference files only when directed
+3. Follow all `zoo-*.mdc` mandates alongside the skill
+4. Never ask user to invoke via slash command

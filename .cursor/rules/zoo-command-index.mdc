@@ -1,0 +1,59 @@
+---
+description: Maps all .roo/commands/zoo-*.md workflows to auto-invoked Cursor skills — no slash commands needed
+alwaysApply: true
+---
+
+# Command → Skill Index
+
+Zoo slash commands are **retired in Cursor**. When user intent matches a command, load the skill and optionally read `.roo/commands/zoo-{name}.md` for workflow states/gates.
+
+| Command (reference) | Primary skill(s) | Mode |
+|---------------------|------------------|------|
+| `zoo-fix` | `zoo-diagnosing-bugs` → `zoo-tweak` | architect → tweaker |
+| `zoo-feature` | `zoo-grill-with-docs` → `zoo-to-spec` → `zoo-to-tickets` | architect |
+| `zoo-refactor` | `zoo-improve-codebase-architecture` | architect |
+| `zoo-review` | `zoo-code-review` | architect |
+| `zoo-triage` | `zoo-triage` | architect |
+| `zoo-explore` | `zoo-explore` | architect |
+| `zoo-implement` | `zoo-implement` | tweaker |
+| `zoo-tweak` | `zoo-tweak` | tweaker |
+| `zoo-tdd` | `zoo-tdd` | tweaker |
+| `zoo-verify` | `zoo-verify` | tweaker |
+| `zoo-ship` | verify → review → `zoo-commit-and-document` | chain |
+| `zoo-commit-and-document` | `zoo-commit-and-document` | tweaker |
+| `zoo-diagnosing-bugs` | `zoo-diagnosing-bugs` | architect |
+| `zoo-prototype` | `zoo-prototype` | architect |
+| `zoo-ddd` | `zoo-ddd`, `zoo-domain-modeling` | architect |
+| `zoo-bdd` / `zoo-atdd` / `zoo-cdd` | matching skill | architect |
+| `zoo-api-first` | `zoo-api-first` | architect |
+| `zoo-to-spec` / `zoo-to-prd` / `zoo-to-tickets` / `zoo-to-issues` | matching skill | architect |
+| `zoo-grill-me` / `zoo-grill-with-docs` | matching skill | any |
+| `zoo-munger` | `zoo-munger-perspective` | any |
+| `zoo-paperclip-*` | `zoo-paperclip-*` skills | any |
+| `zoo-tree-of-thoughts` | `zoo-tree-of-thoughts` | architect |
+| `zoo-workflow-status` | `zoo-workflow-status` | any |
+| `zoo-wizard` | `zoo-wizard` | any |
+| `zoo-wayfinder` | `zoo-wayfinder` | architect |
+| `zoo-handoff` | `zoo-handoff` | any |
+| `zoo-teach` | `zoo-teach` | any |
+| `zoo-caveman` | `zoo-caveman` | any |
+| `zoo-scaffold-context` | `zoo-scaffold-context` | architect |
+| `zoo-update-docs` | `zoo-update-docs` | tweaker |
+| `zoo-resolve-merge` | `zoo-resolving-merge-conflicts` | tweaker |
+| `zoo-setup-matt-pocock-skills` | `zoo-setup-matt-pocock-skills` | any |
+| `zoo-writing-great-skills` | `zoo-writing-great-skills` | any |
+| `zoo-ask-zoo` | `zoo-ask-zoo` | any |
+| `zoo-improve-codebase-architecture` | `zoo-improve-codebase-architecture` | architect |
+
+## Imported skills (Dorothy + Bernstein)
+
+| Skill | Use when |
+|-------|----------|
+| `zoo-vercel-react-best-practices` | React/Next.js performance |
+| `zoo-web-design-guidelines` | UI/accessibility audit |
+| `zoo-theme-sandbox` | Theme/colors/new page — sandbox-first UI workflow (port 3333) |
+| `zoo-component-refactoring` | Split large React components |
+| `zoo-completion-protocol` | Task done → verify → review → commit gate |
+| `zoo-athena-doctrine` | **Always** — universal directive for all functionality |
+
+Commands live at `.roo/commands/`. Read for state machines and gates; execute via skills.

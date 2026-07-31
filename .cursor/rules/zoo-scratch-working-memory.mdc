@@ -1,0 +1,19 @@
+---
+description: Scratch Working Memory (Zoo mandate)
+alwaysApply: true
+source: .roo/rules/07-scratch-working-memory.md
+syncedAt: 2026-07-31T16:36:40.754Z
+---
+
+# Scratch Working Memory
+
+**Auto-apply** for complex multi-angle analysis (reviews, features, refactors, diagnoses).
+
+## Protocol
+
+1. **Initialize:** `.scratch/{category}/{YYYY-MM-DD}/{skill}-{slug}/session.md`
+2. **Write phase:** Each angle → `{angle}.md`
+3. **Read phase:** Before each new angle, read all prior angle files
+4. **Synthesize:** Write `synthesis.md` with prioritized recommendations
+
+Use whenever a skill declares "Uses scratch working memory" or the task spans multiple analysis angles.

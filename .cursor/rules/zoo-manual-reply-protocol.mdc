@@ -1,0 +1,22 @@
+---
+description: Manual Reply Protocol (Zoo mandate)
+alwaysApply: true
+source: .roo/rules/03-manual-reply-protocol.md
+syncedAt: 2026-07-31T16:36:40.753Z
+---
+
+# Manual Reply Protocol
+
+Use numbered options **only when intent is genuinely ambiguous** — not for workflow approval.
+
+**Safe suggestions:** plain-language option text.
+
+**Never include:** slash commands, mode names, routing arrows.
+
+Users may reply with number or option text.
+
+Example (ambiguous fix vs explore):
+1. Diagnose the bug first
+2. Explore the codebase area first
+
+Do not use this protocol to gate execution when one workflow clearly fits.

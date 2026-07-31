@@ -1,0 +1,30 @@
+---
+description: Caveman-Simple UI Clarity (Zoo mandate)
+alwaysApply: true
+---
+
+# Caveman-Simple UI Clarity
+
+**Every UI must be extremely clear and self-explanatory. Never assume the user knows or understands anything inherently.** If a person could misread, overlook, or wonder "what does this mean / what scale is this / what happens if I click it," the UI has failed and must be fixed — not documented elsewhere.
+
+Applies to every user-facing surface: web pages, forms, labels, buttons, inputs, empty states, errors, tooltips, and copy.
+
+## Hard rules
+
+1. **No internal jargon in user-facing copy.** No invariant codes, doctrine shorthand, acronyms, class names, or ticket IDs in visible text. Say the plain-language *why* instead. Internal codes may live only in a `title=` tooltip or a code comment for traceability.
+2. **Call out the non-obvious explicitly.** Units, scales, ranges, and formats must be stated on-screen (e.g. "0.00–1.00", "%", "USD", "must sum to 1.00"). Never rely on the user inferring them.
+3. **Show, don't assume.** Give a concrete example or placeholder for every input where the right answer isn't self-evident (e.g. `e.g. Delivery deadline this week is business-critical`).
+4. **Name required fields and consequences.** Say what is required and what happens on submit ("required — saved to the record"), in plain words.
+5. **Explain relationships between controls.** If two inputs are linked (a split, a dependency, a total), say so and reflect it live (e.g. a running sum with ✓ valid / ✗ invalid).
+6. **State what an action does before it is taken.** Buttons and destructive/irreversible actions must describe their effect, not just a verb.
+7. **Prefer words over cleverness.** A slightly longer, unambiguous label beats a terse or witty one. Clarity outranks brevity.
+
+## Self-check before shipping any UI
+
+- [ ] Could a first-time user with zero context understand every label, number, and control?
+- [ ] Is every unit / scale / range / format written on screen?
+- [ ] Does every non-obvious input have an example or placeholder?
+- [ ] Is any internal code/jargon leaking into visible text? (move to tooltip or remove)
+- [ ] Are linked controls and their combined rule shown explicitly?
+
+**When in doubt, over-explain in the UI.** Assume the user overlooked it — because they will. (See also `zoo-wcag-compliance`, `zoo-theme-sandbox`, `zoo-caveman`.)

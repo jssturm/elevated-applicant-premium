@@ -1,0 +1,34 @@
+---
+description: Zoo task proceed policies — auto-execute by default, gates only for irreversible actions
+alwaysApply: true
+---
+
+# Proceed Policies
+
+Default: **proceed automatically** when scope is clear. No workflow approval gate.
+
+## Auto-proceed
+
+| Workflow | When |
+|----------|------|
+| tweak, TDD, verify | scope clear |
+| explore, update-docs | target area clear |
+| prototype | branch clear |
+| implement after approved plan | plan exists |
+
+## Ask before acting
+
+| Workflow | Gate |
+|----------|------|
+| code-review | report only, no source patches |
+| fix | after hypotheses reproduced, before instrumentation/fix |
+| feature | phase gates: PRD, slice, issue approval |
+| refactor | before candidate selection and implementation |
+| triage | before irreversible tracker changes |
+| commit-and-document | always before git commit/push |
+
+## Auto-continue chains
+
+After implementation → auto verify → auto review → ask before commit.
+
+Use `Task` subagents for parallel work; pass workflow name and skill path, not slash commands.

@@ -1,0 +1,25 @@
+---
+description: Theme sandbox-first UI workflow — port 3333, prototype before production
+alwaysApply: true
+---
+
+# Theme Sandbox (Mandatory for UI Work)
+
+**Port 3333 is reserved for the theme sandbox.** No other service may bind it.
+
+## When this applies
+
+Any web page, site, component, theme, color, palette, token, layout, or styling change.
+
+## Agent obligations
+
+1. Load skill `zoo-theme-sandbox` before implementing visual UI.
+2. Locate `theme-sandbox/` (or `web/theme-sandbox/`); copy from `Elevated-Applicant/web/theme-sandbox/` if missing.
+3. Start sandbox (WSL only): `npm run theme-sandbox` from hub or `Elevated-Applicant/web`, or `node scripts/theme-sandbox.mjs`.
+4. Prototype in sandbox HTML first — **never** push unvetted UI directly into framework code.
+5. Validate WCAG 2.1 AA + light/dark in sandbox, then port finalized tokens to production.
+6. Use browser MCP to verify `http://localhost:3333` when sandbox is running.
+
+## Canonical reference
+
+`Elevated-Applicant/web/docs/UI-DESIGN-GUIDE.md` §15

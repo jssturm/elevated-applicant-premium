@@ -1,0 +1,14 @@
+---
+description: MCP Awareness (Zoo mandate)
+alwaysApply: true
+source: .roo/rules/05-mcp-awareness.md
+syncedAt: 2026-07-31T16:36:40.753Z
+---
+
+# MCP Awareness
+
+If MCP tools are available, prefer them when they match the task better than built-in tools.
+
+- Check `GetMcpTools` before assuming a server exists
+- Authenticate via `mcp_auth` only when a call fails with auth error
+- If no MCP servers configured, ignore this rule

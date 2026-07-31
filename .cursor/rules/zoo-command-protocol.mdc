@@ -1,0 +1,32 @@
+---
+description: Workflow Protocol (Zoo mandate)
+alwaysApply: true
+source: .roo/rules/01-command-protocol.md
+syncedAt: 2026-07-31T16:36:40.748Z
+---
+
+# Workflow Protocol
+
+Workflows are triggered by **task intent**, not slash commands.
+
+## Execution steps
+
+1. Infer workflow from the user's request (`zoo-routing.mdc`)
+2. Load `.cursor/skills/zoo-{name}/SKILL.md` for the matched workflow
+3. If multi-phase, also read `.roo/commands/zoo-{name}.md` for phase gates and state machine
+4. Execute the skill workflow; follow all `.cursor/rules/zoo-*.mdc` mandates
+5. Auto-continue through safe chain steps (verify after implement) unless blocked
+
+## State machines
+
+Multi-phase workflows may define `states` and `transitions` in command YAML:
+
+- Initialize `.scratch/{workflow}-state.json`
+- Honor `gate: human_approval` at phase boundaries
+- Terminal states = workflow complete
+
+## Do not
+
+- Require or suggest slash commands
+- Wait for workflow selection when intent is clear
+- Auto-run git commit/push without explicit user request

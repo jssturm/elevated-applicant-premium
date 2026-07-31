@@ -1,0 +1,38 @@
+---
+description: Zoo Flow overview — auto-routing, roles, and Cursor tool mapping
+alwaysApply: true
+---
+
+# Zoo Flow Overview
+
+This workspace runs **Zoo Flow** automatically (see [AGENTS.md](AGENTS.md)). No slash commands.
+
+## Auto-routing
+
+1. Read the user's request
+2. Infer the lightest safe workflow (see `zoo-routing.mdc`, `zoo-auto-invocation.mdc`)
+3. Load the matching skill from `.cursor/skills/zoo-{name}/`
+4. Adopt the right role and execute immediately
+
+## Roles (adopted automatically per phase)
+
+1. **System Architect** — plan, diagnose, explore, review. Edit only `*.md`, `.scratch/**`, `docs/**`.
+2. **Code Tweaker** — implement, test, verify, prototype. Full repo. Auto-critic before completing.
+
+Multi-phase workflows switch roles automatically (e.g. diagnose → implement → verify).
+
+## Intent → workflow
+
+| Intent | Auto-load skill |
+|--------|-----------------|
+| Unknown code area | `zoo-explore` |
+| Broken behavior | `zoo-diagnosing-bugs` |
+| New capability | `zoo-grill-with-docs` → `zoo-to-spec` |
+| Bad structure | `zoo-improve-codebase-architecture` |
+| Small known fix | `zoo-tweak` |
+| Tests first | `zoo-tdd` |
+| Verify change | `zoo-verify` |
+
+## Completion format
+
+Before ending: what was done, files changed, commands/tests (pass/fail), status, remaining risk, next step if any.

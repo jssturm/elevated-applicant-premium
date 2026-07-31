@@ -1,0 +1,48 @@
+---
+description: Zoo workflow routing matrix — auto-select from natural language intent
+alwaysApply: true
+---
+
+# Workflow Routing (Auto)
+
+Infer workflow from intent. Load skill. Execute immediately.
+
+## Intent → skill → role
+
+| Intent | Skill | Role |
+|--------|-------|------|
+| small fix, tweak, CSS | `zoo-tweak` | tweaker |
+| test-first, TDD | `zoo-tdd` | tweaker |
+| behavior scenarios | `zoo-bdd` | tweaker |
+| acceptance criteria first | `zoo-atdd` | tweaker |
+| UI components | `zoo-cdd` | tweaker |
+| web page, site, theme, colors, styling | `zoo-theme-sandbox` | tweaker |
+| domain modeling | `zoo-ddd` | architect |
+| API contract | `zoo-api-first` | architect |
+| bug, debug, broken | `zoo-diagnosing-bugs` | architect → tweaker |
+| new feature, PRD | `zoo-grill-with-docs` | architect |
+| refactor, structure | `zoo-improve-codebase-architecture` | architect |
+| explore, unfamiliar | `zoo-explore` | architect |
+| review diff/PR | `zoo-code-review` | architect |
+| verify, tests, lint | `zoo-verify` | tweaker |
+| ship finished work | verify + review + commit | tweaker |
+
+## Decision guide (top-down)
+
+1. Unknown area → `zoo-explore`
+2. Broken, unknown cause → `zoo-diagnosing-bugs`
+3. New capability → feature planning skills
+4. Bad structure → `zoo-improve-codebase-architecture`
+5. Small known fix → `zoo-tweak`
+6. Tests first → `zoo-tdd`
+7. Verify change → `zoo-verify`
+
+## Risk levels
+
+- **R1** copy/style/typo → `zoo-tweak`
+- **R2** localized known target → `zoo-tweak` or `zoo-tdd`
+- **R3** behavior change → `zoo-tdd` + auto verify/review
+- **R4** cross-module → feature/refactor skills + verify
+- **R5** auth/payments/security → strict planning gates
+
+Prefer lightest safe workflow. Auto-continue chains unless blocked.

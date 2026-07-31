@@ -1,0 +1,71 @@
+---
+description: jssturm repository registry — inventory and Zoo propagation for all GitHub repos
+alwaysApply: true
+---
+
+# Repository Registry
+
+All `jssturm` GitHub repos are tracked in `.cursor/repos/registry.json`.
+
+**Push skip list:** `.cursor/repos/push-skip-list.json` — upstream fork clones (`zoo-flow`, `agenttrace-luo`, `bernstein`, `omniroute`) must never be pushed. See `zoo-git-push-skip-list.mdc`.
+
+**Disregard list:** `.cursor/repos/disregard-list.json` — repos never treated as clone targets or reported as missing (renamed/deleted upstream, or intentionally untracked). Currently: `cv-santiago`. Enforced by `clone` (default) and `list --missing`; an explicit `clone <name>` still overrides it.
+
+## Commands
+
+```bash
+node scripts/inventory-repos.mjs          # refresh registry
+node scripts/manage-repos.mjs list        # all repos
+node scripts/manage-repos.mjs list --missing
+node scripts/manage-repos.mjs list --needs-zoo
+node scripts/manage-repos.mjs clone       # clone missing (GITHUB_TOKEN or gh auth)
+node scripts/manage-repos.mjs sync        # fetch all + fast-forward clean repos
+node scripts/manage-repos.mjs sync --dry-run     # report drift, change nothing
+node scripts/manage-repos.mjs scrub-remotes      # strip credentials from .git/config
+node scripts/manage-repos.mjs propagate-zoo
+node scripts/manage-repos.mjs propagate-full   # auto-runs sanitize-public + verify
+node scripts/manage-repos.mjs verify-public
+node scripts/manage-repos.mjs sanitize-public
+```
+
+## Staying current with cloud work
+
+Cloud-agent work lands on `origin/cursor/*` branches and merges to `main` remotely. Local clones drift silently until fetched.
+
+Run `sync` before starting work in any repo, or after cloud agents finish.
+
+`sync` guarantees:
+- Fetches every clone with `--prune`, including the four fetch-only fork clones
+- Fast-forwards **only** a clean tree with zero local commits — the sole lossless case
+- **Never** merges, rebases, or pushes; diverged and dirty repos are reported, not touched
+- Lists `origin/cursor/*` branches so cloud-agent work is visible
+
+## Credential hygiene
+
+**Never embed a token in a remote URL.** `git clone https://<token>@github.com/...` persists the token into `.git/config` permanently, where it leaks via `git remote -v` and breaks every clone on rotation.
+
+Auth comes from the git credential helper, or from `GITHUB_TOKEN` supplied per-invocation through an ephemeral credential helper. Run `scrub-remotes` if any remote acquires inline credentials.
+
+## Full GitHub capture
+
+Credentials load automatically from `development/.env` (see `.env.example`):
+
+```bash
+cp .env.example .env   # add GITHUB_TOKEN
+node scripts/inventory-repos.mjs
+```
+
+Or use `gh auth login` if GitHub CLI is installed.
+
+## Tier policy
+
+| Tier | Examples | Zoo action |
+|------|----------|------------|
+| strategic (private) | Project-Athena, Elevated-Applicant | Full overlay + Athena doctrine |
+| owned-local (private) | trading-bot, LexiRoute | full or slim bundle; Athena at hub only |
+| public | Plan-It, elevated-installer, forks | **Sanitized** — no Athena; `sanitize-public` |
+| owned-remote | cv-santiago | clone first |
+
+**Athena is proprietary.** Never propagate `zoo-athena-doctrine.mdc` to public repos.
+
+Profile: https://github.com/jssturm?tab=repositories

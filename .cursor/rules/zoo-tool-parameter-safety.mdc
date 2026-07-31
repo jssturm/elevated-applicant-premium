@@ -1,0 +1,17 @@
+---
+description: Tool Parameter Safety (Zoo mandate)
+alwaysApply: true
+source: .roo/rules/06-tool-parameter-safety.md
+syncedAt: 2026-07-31T16:36:40.753Z
+---
+
+# Tool Parameter Safety
+
+All required parameters must be present in every tool call.
+
+**On rejection:** Do not retry unchanged (counts toward three-failure cap). Supply the missing value or surface the blocker.
+
+**Write-tool guard (`Write`, `StrReplace`):**
+- Compose full content before calling
+- If content exceeds ~150 lines, split into multiple writes
+- If splitting is impractical, output in response and ask user to confirm

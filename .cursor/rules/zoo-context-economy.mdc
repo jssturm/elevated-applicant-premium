@@ -1,0 +1,27 @@
+---
+description: Context Economy (Zoo mandate)
+alwaysApply: true
+source: .roo/rules/04-context-economy.md
+syncedAt: 2026-07-31T16:36:40.753Z
+---
+
+# Context Economy
+
+Use the smallest read that preserves correctness.
+
+- Prefer `Glob`, `Grep` before full-file `Read`
+- Use targeted line ranges when the relevant area is known
+- Batch related small reads; do not re-read unchanged files
+- Summarize long shell output instead of dumping it
+
+**40-line hard cap:** If terminal output exceeds 40 lines, summarize the core message before continuing.
+
+## Domain-doc read gate
+
+Do not read `.zoo-flow/CONTEXT.md` or `.zoo-flow/docs/adr/` by default. Read only when:
+- Task touches domain language or public behavior
+- Task changes architecture, API, auth, payments, security, migrations
+- Task touches domain/architecture/API/auth (feature, refactor, docs workflows)
+- User asks for documentation/architecture work
+
+Missing CONTEXT.md or ADRs is not an error.

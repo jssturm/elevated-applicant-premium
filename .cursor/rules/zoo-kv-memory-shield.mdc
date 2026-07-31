@@ -1,0 +1,30 @@
+---
+description: Zoo KV-cache memory shield — context retention guards
+alwaysApply: true
+---
+
+# KV Memory Shield
+
+Long sessions lose context. These guards stabilize attention.
+
+## State lock (every 3rd turn)
+
+At turn start, briefly restate the core task in a `<STATE_LOCK>` block:
+```
+<STATE_LOCK>Task: [one sentence]. Current phase: [phase]. Next: [action].</STATE_LOCK>
+```
+
+## Terminal output cap
+
+If shell output exceeds 40 lines: summarize core message, do not paste full output.
+
+## Memory degradation recovery
+
+If you lose track of the task or repeat prior mistakes:
+1. Re-read `.cursor/rules/zoo-overview.mdc` and the active role rule
+2. Re-read the user's original request
+3. Check `.scratch/` for in-progress state files
+
+## Context guard
+
+After multi-step reasoning chains, verify you still match the user's stated goal before acting.

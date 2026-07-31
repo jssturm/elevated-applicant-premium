@@ -1,0 +1,23 @@
+---
+description: Zoo rule index — maps .roo/rules to .cursor/rules (all alwaysApply)
+alwaysApply: true
+---
+
+# Zoo Rule Index
+
+All rules use `alwaysApply: true`. All skills are model-invoked (no `disable-model-invocation`).
+
+| Roo source | Cursor rule |
+|------------|---------------|
+| `.roo/rules/00-12` | `zoo-path-safety` through `zoo-kv-memory-shield` |
+| `.roo/rules-code-tweaker/*` | `zoo-role-code-tweaker`, `zoo-auto-critic` |
+| `.roo/rules-system-architect/*` | `zoo-role-system-architect` |
+| `.roo/rules-custom-orchestrator/*` | `zoo-role-orchestrator`, `zoo-routing`, `zoo-delegation`, `zoo-model-routing` |
+| `.roomodes` | `AGENTS.md`, role rules |
+| `.roo/skills/` | `.cursor/skills/zoo-*/` |
+| Cursor-only rules | `.roo/rules/cursor-export/` |
+| Hub-only rules | `zoo-cursor-hub`, `zoo-command-index`, `zoo-repo-registry`, `zoo-athena-doctrine` (universal) |
+| Correction capture | `zoo-self-correction` → skill `zoo-self-correction` (proposes rules, never self-writes) |
+| Bidirectional sync | `scripts/sync-zoo-cursor.mjs` + `.cursor/hooks.json` |
+
+Edit either side — newest wins. See `zoo-sync.mdc`.

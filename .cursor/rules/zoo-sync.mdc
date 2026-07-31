@@ -1,0 +1,39 @@
+---
+description: Zoo ↔ Cursor bidirectional sync — edit either side; hooks keep both aligned
+alwaysApply: true
+---
+
+# Zoo ↔ Cursor Sync
+
+Edit skills/rules/mandates in **either** location. Sync runs automatically.
+
+## Where to add things
+
+| Add in Cursor | Also appears in Zoo |
+|---------------|---------------------|
+| `.cursor/skills/zoo-my-skill/SKILL.md` | `.roo/skills/{bucket}/my-skill/SKILL.md` |
+| `.cursor/rules/zoo-my-mandate.mdc` | `.roo/rules/cursor-export/my-mandate.md` |
+
+| Add in Zoo | Also appears in Cursor |
+|------------|------------------------|
+| `.roo/skills/{bucket}/my-skill/SKILL.md` | `.cursor/skills/zoo-my-skill/` |
+| `.roo/rules/NN-my-mandate.md` | `.cursor/rules/zoo-my-mandate.mdc` |
+
+**Conflict rule:** newest file wins per pair.
+
+## Automation
+
+- **On Cursor session start** → full sync
+- **After agent edits** to `.cursor/skills/`, `.cursor/rules/zoo-*`, `.roo/skills/`, `.roo/rules/` → debounced sync
+- **Manual:** `node scripts/sync-zoo-cursor.mjs`
+- **Log:** `.cursor/zoo-sync.log`
+
+## New skill in Cursor only
+
+Create `.cursor/skills/zoo-{name}/SKILL.md` → sync creates `.roo/skills/engineering/{name}/` (bucket inferred from name).
+
+## New mandate in Cursor only
+
+Create `.cursor/rules/zoo-{name}.mdc` with `alwaysApply: true` → sync exports to `.roo/rules/cursor-export/{name}.md`.
+
+Restart Cursor after first hook setup so `hooks.json` loads.

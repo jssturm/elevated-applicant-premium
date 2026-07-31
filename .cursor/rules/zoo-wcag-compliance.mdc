@@ -1,0 +1,41 @@
+---
+description: WCAG 2.1 AA Compliance (Zoo mandate)
+alwaysApply: true
+source: .roo/rules/09-wcag-compliance.md
+syncedAt: 2026-07-31T16:36:40.755Z
+---
+
+# WCAG 2.1 AA Compliance
+
+All web styling and design changes MUST meet WCAG 2.1 Level AA. Failing contrast = blocker.
+
+## Minimum ratios
+
+| Element | Minimum |
+|---------|---------|
+| Normal text | 4.5:1 |
+| Large text (≥18pt bold / ≥24px) | 3:1 |
+| UI components & boundaries | 3:1 |
+
+## Pre-ship checklist
+
+0. **Theme sandbox** — validate color pairs in `theme-sandbox/` at `http://localhost:3333` before porting to production (see `zoo-theme-sandbox`)
+1. Text on background — every pair passes
+2. Link colors — all states pass
+3. Button text — both states pass
+4. Form inputs — border ≥3:1; focus ring ≥3:1
+5. Placeholder text ≥4.5:1 or use labels
+6. Focus indicators on all interactive elements
+7. Dark mode variants pass too
+8. `prefers-reduced-motion: reduce` disables non-essential animations
+9. No color-only information (use icons/text/underline)
+
+## Button standard
+
+| Type | Background | Text |
+|------|------------|------|
+| Primary | Dark brand | White |
+| Secondary | Transparent | Body text |
+| Ghost | Transparent | Brand-text |
+
+Define both `--color-brand` (decorative) and `--color-brand-text` (text-safe) tokens.

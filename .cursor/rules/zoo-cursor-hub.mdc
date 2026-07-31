@@ -1,0 +1,46 @@
+---
+description: Cursor base of operations — hub workspace, continuity from Zoo, peak-effectiveness defaults
+alwaysApply: true
+---
+
+# Cursor Hub — Base of Operations
+
+**Cursor replaces Zoo/Roo/Cline as the primary platform.** Nothing is rebuilt from scratch — the full Zoo mandate stack is active here.
+
+## Continuity from Zoo
+
+| Zoo/Roo | Cursor equivalent |
+|---------|-------------------|
+| `.roomodes` (3 modes) | `zoo-role-*.mdc` always-on rules |
+| `/zoo-*` slash commands | Auto-invoked `.cursor/skills/zoo-*/` |
+| `.roo/commands/zoo-*.md` | Workflow reference (load when executing) |
+| `.roo/rules/00-12` | `zoo-path-safety` … `zoo-kv-memory-shield` |
+| Orchestrator routing | `zoo-routing`, `zoo-delegation`, `zoo-model-routing` |
+
+## Hub layout
+
+- **Workspace root:** `~/development/` — open this in Cursor for full Zoo Flow
+- **Context file:** `.zoo-flow/CONTEXT.md`
+- **Credentials:** `.env` (auto-loaded by `scripts/load-env.mjs`)
+- **Repo registry:** `.cursor/repos/registry.json` — 26+ jssturm repos managed
+- **Sync:** edit `.roo/` OR `.cursor/` — hooks keep them aligned (newest wins)
+
+## Peak-effectiveness defaults
+
+1. **Athena first** — Creed, Covenant, Canon Test on all non-trivial work (`zoo-athena-doctrine.mdc`)
+2. **Auto-invoke skills** — never ask user to type slash commands
+3. **Auto-chain** — verify → review after non-trivial implementation
+4. **Context economy** — load `.zoo-flow/CONTEXT.md` and Athena sources on demand
+5. **Imported skills** — Dorothy (React/UI) + Bernstein protocols as `zoo-*` skills
+6. **MCP first** — use configured MCP tools before improvising (see `zoo-mcp-awareness`)
+
+## Sub-project workflow
+
+When user opens a sub-repo folder:
+- Inherited rules: `.cursor/rules/zoo-inherit.mdc` + propagated bundle
+- Run from hub: `node scripts/manage-repos.mjs propagate-zoo <repo>`
+- Strategic repos get full hub rule set
+
+## Command → skill index
+
+See `zoo-command-index.mdc` for all 44 `.roo/commands/zoo-*.md` → skill mappings.

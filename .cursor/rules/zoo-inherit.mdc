@@ -1,0 +1,18 @@
+---
+description: Inherit Zoo Flow mandates from development hub
+alwaysApply: true
+---
+
+# Zoo Flow Inheritance
+
+This repo inherits agent mandates from the development workspace Zoo hub.
+
+When opened standalone, follow:
+- `.cursor/rules/zoo-inherit.mdc` (this file)
+- Project-specific rules in this repo's `.cursor/rules/`
+
+Hub location: `~/development/.cursor/` — sync via `node scripts/manage-repos.mjs propagate-zoo`.
+
+Core mandates: auto-invocation, Paperclip/Munger gates, auto-critic, path safety, three-failure rule.
+Load matching skills from `.cursor/skills/zoo-*/` when task intent matches.
+Hub: `~/development/` — open workspace root in Cursor for full Zoo Flow.
